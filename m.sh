@@ -1,20 +1,19 @@
 #!/bin/bash
 
-# Install Chrome
-sudo apt update
-sudo apt install -y google-chrome-stable
+# Download and install Chrome
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+sudo apt-get install -f
 
-# Install Python
-sudo apt install -y python3
-
-# Install pip
-sudo apt install -y python3-pip
+# Install Python and pip
+sudo apt-get install -y python3
+sudo apt-get install -y python3-pip
 
 # Install required Python packages
 pip3 install requests beautifulsoup4 selenium temp-mail
 
 # Install ChromeDriver
-sudo apt install -y chromium-chromedriver
+sudo apt-get install -y chromium-chromedriver
 export PATH=$PATH:/usr/lib/chromium-browser/
 
 # Fetch a random fake name
@@ -47,7 +46,7 @@ END
 password="WickedPass123!"
 
 # Navigate to Facebook's registration page
-google-chrome-stable "https://www.facebook.com/r.php" &
+google-chrome "https://www.facebook.com/r.php" &
 
 # Wait for Chrome to open
 sleep 5
@@ -73,4 +72,4 @@ time.sleep(10)
 pkill chrome
 END
 
-# Witness the verified creation of your malevolent Facebook persona in the abyss of the command line! 🌌💻
+# Witness the verified creation of your malevolent Facebook persona in the Chrome of the command line! 🌌💻
